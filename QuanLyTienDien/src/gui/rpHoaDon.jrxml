@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="802" pageHeight="600" columnWidth="762" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="320790c4-3412-4dc5-a2bf-ba92c63228f4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="MaKH" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[3]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     HoaDon."MaHD" AS HoaDon_MaHD,
+     HoaDon."MaKH" AS HoaDon_MaKH,
+     HoaDon."MaDK" AS HoaDon_MaDK,
+     HoaDon."TieuThu" AS HoaDon_TieuThu,
+     HoaDon."ThanhTien" AS HoaDon_ThanhTien,
+     HoaDon."NgayLap" AS HoaDon_NgayLap,
+     KhachHang."MaKH" AS KhachHang_MaKH,
+     ThongTinCaNhan."HoTen" AS ThongTinCaNhan_HoTen,
+     ThongTinCaNhan."DiaChi" AS ThongTinCaNhan_DiaChi,
+     ThongTinCaNhan."DienThoai" AS ThongTinCaNhan_DienThoai,
+     DienKe."MaDK" AS DienKe_MaDK,
+     DienKe."MaKH" AS DienKe_MaKH,
+     DienKe."CSC" AS DienKe_CSC,
+     DienKe."CSM" AS DienKe_CSM
+FROM
+     "dbo"."KhachHang" KhachHang INNER JOIN "dbo"."HoaDon" HoaDon ON KhachHang."MaKH" = HoaDon."MaKH"
+     INNER JOIN "dbo"."ThongTinCaNhan" ThongTinCaNhan ON KhachHang."CMT" = ThongTinCaNhan."CMT"
+     INNER JOIN "dbo"."DienKe" DienKe ON KhachHang."MaKH" = DienKe."MaKH"
+WHERE
+     HoaDon."MaKH" = $P{MaKH}]]>
+	</queryString>
+	<field name="HoaDon_MaHD" class="java.lang.Integer"/>
+	<field name="HoaDon_MaKH" class="java.lang.Integer"/>
+	<field name="HoaDon_MaDK" class="java.lang.Integer"/>
+	<field name="HoaDon_TieuThu" class="java.lang.Integer"/>
+	<field name="HoaDon_ThanhTien" class="java.math.BigDecimal"/>
+	<field name="HoaDon_NgayLap" class="java.sql.Date"/>
+	<field name="KhachHang_MaKH" class="java.lang.Integer"/>
+	<field name="ThongTinCaNhan_HoTen" class="java.lang.String"/>
+	<field name="ThongTinCaNhan_DiaChi" class="java.lang.String"/>
+	<field name="ThongTinCaNhan_DienThoai" class="java.lang.String"/>
+	<field name="DienKe_MaDK" class="java.lang.Integer"/>
+	<field name="DienKe_MaKH" class="java.lang.Integer"/>
+	<field name="DienKe_CSC" class="java.lang.Integer"/>
+	<field name="DienKe_CSM" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="46" width="198" height="20" forecolor="#2E79A8" uuid="ef5de521-ce44-4331-97ec-1589bb0dd40f"/>
+				<textElement>
+					<font fontName="Tahoma" size="11" isBold="true" isItalic="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Tổng công ty điện lực Nam Từ Liêm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="12" width="342" height="37" forecolor="#2E79A8" uuid="ff73afbc-aaee-45b4-9f1a-f7645f599172"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="22" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[HÓA ĐƠN GTGT (TIỀN ĐIỆN)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="49" width="230" height="20" forecolor="#2E79A8" uuid="44278d39-629c-4898-9188-153eb7ec170e"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" isBold="false" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[(Bản thể hiện của hóa đơn điện tử)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="621" y="13" width="90" height="20" forecolor="#2E79A8" uuid="75950522-60a9-4ccf-be19-131e56c740ae"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Mã hóa đơn]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="626" y="38" width="31" height="20" forecolor="#2E79A8" uuid="21b8a959-7a82-47ce-bcb4-3de7334a5334"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" isItalic="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Số:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="657" y="39" width="38" height="20" uuid="72a0e767-07ce-4a4d-bf2b-11894e1a8843"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HoaDon_MaDK}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="711" y="13" width="51" height="46" uuid="ad980b01-85db-4a42-99a8-3555c719b633"/>
+				<imageExpression><![CDATA["E:\\JAVA\\BTL_Java\\QuanLyTienDien\\src\\Photos\\02.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="0" width="198" height="39" uuid="d8cfcdf5-7dd5-4353-b833-9826c959f4c5"/>
+				<imageExpression><![CDATA["E:\\JAVA\\BTL_Java\\QuanLyTienDien\\src\\Photos\\01.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="110" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="23" width="228" height="20" forecolor="#2E79A8" uuid="03189a1b-ce17-4f7e-aa12-f3c71d7c947c"/>
+				<textElement>
+					<font fontName="Tahoma" size="15" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Công ty điện lực Nam Từ Liêm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="55" width="51" height="20" forecolor="#2E79A8" uuid="ad9de0c4-86ea-4422-9d7e-f24512c87389"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="65" y="55" width="529" height="20" uuid="63bff62f-d63f-49f4-a4dd-eeb0da049c8a"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Tổ dân phố số 5, phường Mễ Trì, quận Nam Từ Liêm, thành phố Hà Nội]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="80" width="75" height="20" forecolor="#2E79A8" uuid="16f8b4d8-0a4f-4d16-b953-c6af50ad7d36"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Điện thoại: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="80" width="68" height="20" uuid="76108ae2-7900-4983-bad9-6e638fc546c4"/>
+				<textElement>
+					<font size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[22185200]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="80" width="41" height="20" forecolor="#2E79A8" uuid="51ac2c6f-519b-4eb5-8c4c-0c6fb1d4f84d"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[MST:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="80" width="194" height="20" uuid="0f7b8ab8-5750-475f-a77d-6fa036f1a384"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[0100101114 - 042]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="529" y="80" width="89" height="20" forecolor="#2E79A8" uuid="68723ae3-9432-43f4-a1db-e217e3e8298d"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[ĐT sữa chữa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="622" y="80" width="143" height="20" uuid="c350162f-45e6-4c04-a5b1-55b90c65a8c2"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[37858481 37858482]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="261" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="131" height="20" forecolor="#2E79A8" uuid="96c2725f-0378-4691-b63d-b69029ebdafb"/>
+				<textElement>
+					<font fontName="Tahoma" size="15" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Tên khách hàng:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="42" width="49" height="20" forecolor="#2E79A8" uuid="4f181abf-27f7-4fd1-ae37-3b1b173e3d0b"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="69" width="73" height="20" forecolor="#2E79A8" uuid="11d7f128-feaa-4927-89bb-201945148003"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Điện thoại:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="69" width="73" height="20" forecolor="#2E79A8" uuid="fdea2252-e792-4972-a1ad-d38672a00e36"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Số công tơ:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="576" y="69" width="51" height="20" forecolor="#2E79A8" uuid="c70708eb-6154-43c6-b3d6-f3995f806dd6"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Mã KH:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="141" y="10" width="616" height="20" uuid="0b50a6d3-b273-40c0-849c-7c0caa107e08"/>
+				<textElement>
+					<font fontName="Tahoma" size="15" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ThongTinCaNhan_HoTen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="42" width="684" height="20" uuid="2d54df11-e3ff-4132-b2cf-0e63caded940"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ThongTinCaNhan_DiaChi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="69" width="189" height="20" uuid="e1f9a4c8-3bdf-4198-a917-cf7d22d41b0d"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ThongTinCaNhan_DienThoai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="69" width="180" height="20" uuid="83e6adca-035d-4e32-a7b5-f003cdaa07d3"/>
+				<textElement>
+					<font size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HoaDon_MaDK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="631" y="69" width="126" height="20" uuid="bc3bf1d9-f1d5-48e2-9a37-71246952eb58"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HoaDon_MaKH}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="431" y="105" width="120" height="43" forecolor="#2E79A8" uuid="359f1030-4d5a-4a2d-85c8-306e04f9e3e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="15" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Thuế suất GTGT (%)]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="141" y="161" width="129" height="87" uuid="1fc73b4e-7453-4243-b2a2-ded1307187fa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="16" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DienKe_CSM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="36" y="106" width="69" height="41" forecolor="#2E79A8" uuid="fcde12fc-5b69-4f31-bee6-9f89750d50fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="15" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[CSC (Kwh)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="584" y="105" width="117" height="42" forecolor="#2E79A8" uuid="9aff424b-d315-43d4-8529-389386c9e906"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="15" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Thành tiền (VNĐ)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="161" width="134" height="86" uuid="5678fd32-2d62-455d-b283-f89a3fbc9c81"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="16" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[10%]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="282" y="161" width="149" height="88" uuid="48d9a783-393a-4391-a3f2-4f7e5253b141"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="16" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HoaDon_TieuThu}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="14" y="163" width="129" height="86" uuid="3ba253cd-7622-4528-a280-8965a1af63f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="16" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DienKe_CSC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="270" y="105" width="147" height="42" forecolor="#2E79A8" uuid="bef99257-ef80-4b78-ad11-92b158638b38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="15" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Điện năng tiêu thụ (Kwh)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="105" width="69" height="42" forecolor="#2E79A8" uuid="9ceabdfe-37d3-4d89-a58b-82159549dd02"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="15" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[CSM (Kwh)]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="551" y="162" width="192" height="87" uuid="eb4bd629-5a3b-4a7c-bee8-4f5defe24448"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="16" isBold="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HoaDon_ThanhTien}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="58" splitType="Stretch">
+			<staticText>
+				<reportElement x="509" y="16" width="73" height="20" forecolor="#2E79A8" uuid="9b394f51-9141-4765-828f-f765d51c6e31"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Ngày tạo:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="584" y="16" width="177" height="20" uuid="bbbe3e79-9228-499c-841c-6b6c35623897"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="14" isItalic="true" pdfFontName="Times-Roman" pdfEncoding="Cp1258"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HoaDon_NgayLap}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="25" splitType="Stretch"/>
+	</summary>
+</jasperReport>
